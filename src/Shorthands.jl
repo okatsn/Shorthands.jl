@@ -6,4 +6,8 @@ export show_all
 
 include("debugtools.jl")
 export codelocation
+
+using InvertedIndices
+include("manipulatearray.jl")
+export rmkey!
 end
