@@ -9,5 +9,5 @@ export codelocation
 
 using InvertedIndices
 include("manipulatearray.jl")
-export rmkey!
+export rmkey!, rmkey
 end

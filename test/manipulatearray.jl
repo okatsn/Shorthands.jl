@@ -1,4 +1,5 @@
-@testset "rmkey!" begin
+using InvertedIndices
+@testset "rmkey!/rmkey" begin
     v0 = [
         "hour",
         "air_temperature",
@@ -14,7 +15,8 @@
         "windspeed_CWB",
     ]
     v = deepcopy(v0)
-    rmkey!(v, r"\_\d+(hr|d)")
+    expr = r"\_\d+(hr|d)"
+    rmkey!(v, expr)
     answer = [
         "hour",
         "air_temperature",
@@ -25,9 +27,11 @@
         "windspeed_CWB",
     ]
     @test isequal(sort(v),sort(answer) )
+    @test isequal(sort(rmkey(v0, expr)),sort(answer) )
 
     v = deepcopy(v0)
-    rmkey!(v, Not(r"precip"))
+    iexpr = Not(r"precip")
+    rmkey!(v, iexpr)
     answer = [
         "precipitation",
         "precipitation_1hr",
@@ -37,5 +41,6 @@
         "precipitation_3d",
     ]
     @test isequal(sort(v),sort(answer) )
+    @test isequal(sort(rmkey(v0, iexpr)),sort(answer) )
 
 end

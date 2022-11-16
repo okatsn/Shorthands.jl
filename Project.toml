@@ -1,10 +1,11 @@
 name = "Shorthands"
 uuid = "d0c9a04e-d1fd-4d35-a387-089b7121b945"
 authors = ["Tsung-Hsi Wu <okatsn@gmail.com>"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
 InvertedIndices = "41ab1584-1d38-5bbf-9106-f11c6c58b48f"
+TestItems = "1c621080-faea-4a02-84b6-bbd5e436b8fe"
 
 [compat]
 julia = "1.6.4"
