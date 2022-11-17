@@ -10,4 +10,7 @@ export codelocation
 using InvertedIndices
 include("manipulatearray.jl")
 export rmkey!, rmkey
+
+include("toolsextendedfrombase.jl")
+export round_step
 end
