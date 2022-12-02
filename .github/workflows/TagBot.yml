@@ -9,6 +9,17 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
     runs-on: ubuntu-latest
     steps:
+      ### TODO: Make this section a Github action ###
+      - uses: actions/checkout@v2
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: '1'
+      - run: |
+          julia --project=@. -e '
+            using Pkg;
+            Pkg.Registry.add(RegistrySpec(url = "https://github.com/okatsn/OkRegistry.git"))
+            '
+      ### TODO: Make this section a Github action ###
       - uses: JuliaRegistries/TagBot@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
