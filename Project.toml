@@ -5,6 +5,8 @@ version = "0.1.2"
 
 [deps]
 InvertedIndices = "41ab1584-1d38-5bbf-9106-f11c6c58b48f"
+Proj = "c94c279d-25a6-4763-9509-64d165bea63e"
+TOML = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
 TestItems = "1c621080-faea-4a02-84b6-bbd5e436b8fe"
 
 [compat]

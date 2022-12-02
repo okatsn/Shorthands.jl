@@ -13,4 +13,9 @@ export rmkey!, rmkey
 
 include("toolsextendedfrombase.jl")
 export round_step
+
+using Proj
+using TOML
+include("projanalysis.jl")
+export depreport
 end
