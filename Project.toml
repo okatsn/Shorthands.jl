@@ -9,6 +9,7 @@ InvertedIndices = "41ab1584-1d38-5bbf-9106-f11c6c58b48f"
 TestItems = "1c621080-faea-4a02-84b6-bbd5e436b8fe"
 
 [compat]
+Aqua = "0.5"
 InvertedIndices = "1"
 TestItems = "0.1"
 julia = "1.6.4"
