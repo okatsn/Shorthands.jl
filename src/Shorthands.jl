@@ -17,4 +17,7 @@ export round_step
 using Aqua
 include("projanalysis.jl")
 export depreport
+
+include("replacex.jl")
+export replacex
 end
