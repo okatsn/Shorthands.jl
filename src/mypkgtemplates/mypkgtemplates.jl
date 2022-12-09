@@ -32,8 +32,7 @@ t("YourPackage")
 ```
 but with my configurations.
 
-Put your template files under: $(DEFAULT_TEMPLATE_DIR[]).
-The directory structure mocks that of "PkgTemplates/templates".
+Template files are put under: $(DEFAULT_TEMPLATE_DIR[]), just like that of "PkgTemplates/templates".
 """
 function ok_pkg_template(yourpkgname::String; destination="")
     if isempty(destination)
@@ -50,6 +49,10 @@ function ok_pkg_template(yourpkgname::String; destination="")
         Codecov(), # https://about.codecov.io/
         Documenter{GitHubActions}(),
         PkgTemplates.Readme(; file=mypkgtemplate_dir("README.md"), destination="README.md"), # see PkgTemplates/src/plugins/readme.jl
+        TagBot(;registry="okatsn/OkRegistry"), # see PkgTemplates/src/plugins/tagbot.jl
+        # I use the template TagBot.yml in PkgTemplates directly.
+        # If your registry is public, this is all you need to do.
+        # For more information, see [here](https://github.com/JuliaRegistries/TagBot#custom-registries)
     ],
 
     ) # https://www.juliabloggers.com/tips-and-tricks-to-register-your-first-julia-package/
