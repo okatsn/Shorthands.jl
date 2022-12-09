@@ -20,4 +20,8 @@ export depreport
 
 include("replacex.jl")
 export replacex
+
+using PkgTemplates
+include("mypkgtemplates.jl")
+export ok_pkg_template
 end
