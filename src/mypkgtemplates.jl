@@ -1,3 +1,15 @@
+# # Your Documenter template #This is UNUSED
+pages=[
+    "Home" => "index.md",
+    "Examples" => "examples/examples.md",
+    "Exported Functions" => "functions.md",
+    "Models" =>
+                ["Model 1" => "models/model1.md",
+                    "Model 2" => "models/model2.md"],
+    "Reference" => "reference.md",
+    ] # https://documenter.juliadocs.org/stable/man/guide/#Adding-Some-Docstrings
+
+
 """
 A quick package creater that does
 ```julia
@@ -43,16 +55,7 @@ function ok_pkg_template(yourpkgname::String; destination="")
 
     pluginReadme = PkgTemplates.Readme(; file=dst, destination="README.md")
 
-    # # Your Documenter template #SETME
-    pages=[
-        "Home" => "index.md",
-        "Examples" => "examples/examples.md",
-        "Exported Functions" => "functions.md",
-        "Models" =>
-                    ["Model 1" => "models/model1.md",
-                     "Model 2" => "models/model2.md"],
-        "Reference" => "reference.md",
-        ] # https://documenter.juliadocs.org/stable/man/guide/#Adding-Some-Docstrings
+
 
     t = Template(;
     user="okatsn",
@@ -62,7 +65,7 @@ function ok_pkg_template(yourpkgname::String; destination="")
         Git(; manifest=false),
         GitHubActions(),
         Codecov(), # https://about.codecov.io/
-        Documenter{GitHubActions}(;pages=pages),
+        Documenter{GitHubActions}(),
         pluginReadme
     ],
 
