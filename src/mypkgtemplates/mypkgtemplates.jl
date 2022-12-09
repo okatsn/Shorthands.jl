@@ -40,51 +40,21 @@ function ok_pkg_template(yourpkgname::String; destination="")
         destination = pwd()
     end
 
-    dirtemp = mkpath("oktemptemp")
-    _dirtemp(args...) = joinpath(dirtemp, args...)
-    _dirtemp()
-
-    stdfile = PkgTemplates.Readme().file
-
-    dst = _dirtemp("OkREADME.md") # what ever the name is OK since it will be removed
-    # cp(stdfile, _dirtemp("OkREADME1.md"); force=true) # original file
-
-    original = open(stdfile, "r") do io
-        read(io, String)
-    end
-
-    # # Your README.md template #SETME
-    myreadme = """
-    $original
-
-    ## Instruction
-
-
-    """
-
-    open(dst, "a+") do io
-        write(io, myreadme)
-    end
-
-    pluginReadme = PkgTemplates.Readme(; file=dst, destination="README.md")
-
-
-
     t = Template(;
     user="okatsn",
     dir=destination,
     julia=v"1.6",
     plugins=[
         Git(; manifest=false),
-        GitHubActions(;file = mypkgtemplate_dir("github", "workflows", "CI.yml")),
+        GitHubActions(;file = mypkgtemplate_dir("github", "workflows", "CI.yml")), # see PkgTemplates/src/plugins/ci.jl
         Codecov(), # https://about.codecov.io/
         Documenter{GitHubActions}(),
-        pluginReadme
+        PkgTemplates.Readme(; file=mypkgtemplate_dir("README.md"), destination="README.md"), # see PkgTemplates/src/plugins/readme.jl
     ],
 
     ) # https://www.juliabloggers.com/tips-and-tricks-to-register-your-first-julia-package/
 
 
     t(yourpkgname) # create template
-    rm(dirtemp; recursive=true)
+
 end
