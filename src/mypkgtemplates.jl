@@ -43,18 +43,6 @@ function ok_pkg_template(yourpkgname::String; destination="")
 
     pluginReadme = PkgTemplates.Readme(; file=dst, destination="README.md")
 
-    t = Template(;
-    user="okatsn",
-    dir=destination,
-    julia=v"1.6",
-    plugins=[
-        Git(; manifest=false),
-        GitHubActions(),
-        Codecov(), # https://about.codecov.io/
-        Coveralls(), # https://coveralls.io/
-        Documenter{GitHubActions}(),
-        pluginReadme
-    ],
     # # Your Documenter template #SETME
     pages=[
         "Home" => "index.md",
@@ -65,6 +53,19 @@ function ok_pkg_template(yourpkgname::String; destination="")
                      "Model 2" => "models/model2.md"],
         "Reference" => "reference.md",
         ] # https://documenter.juliadocs.org/stable/man/guide/#Adding-Some-Docstrings
+
+    t = Template(;
+    user="okatsn",
+    dir=destination,
+    julia=v"1.6",
+    plugins=[
+        Git(; manifest=false),
+        GitHubActions(),
+        Codecov(), # https://about.codecov.io/
+        Documenter{GitHubActions}(;pages=pages),
+        pluginReadme
+    ],
+
     ) # https://www.juliabloggers.com/tips-and-tricks-to-register-your-first-julia-package/
 
 
