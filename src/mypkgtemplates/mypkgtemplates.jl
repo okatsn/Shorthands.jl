@@ -24,6 +24,8 @@ t("YourPackage")
 but with my configurations.
 
 Template files are put under: $(DEFAULT_TEMPLATE_DIR[]), just like that of "PkgTemplates/templates".
+
+Correspond `PkgTemplates` to this commit: https://github.com/JuliaCI/PkgTemplates.jl/commit/0de5d855e050d93169f8661a13b3a53a8cb2b283 or [v0.7.29](https://github.com/JuliaCI/PkgTemplates.jl/releases/tag/v0.7.29)
 """
 function ok_pkg_template(yourpkgname::String; destination="", julia_ver = v"1.6", username="okatsn")
     if isempty(destination)
@@ -44,6 +46,7 @@ function ok_pkg_template(yourpkgname::String; destination="", julia_ver = v"1.6"
         # I use the template TagBot.yml in PkgTemplates directly.
         # If your registry is public, this is all you need to do.
         # For more information, see [here](https://github.com/JuliaRegistries/TagBot#custom-registries)
+        Tests(; file=mypkgtemplate_dir("test","runtests.jl")) # see PkgTemplates/src/plugins/tests.jl
     ],
 
     ) # https://www.juliabloggers.com/tips-and-tricks-to-register-your-first-julia-package/
