@@ -1,13 +1,3 @@
-# # Your Documenter template #This is UNUSED
-pages=[
-    "Home" => "index.md",
-    "Examples" => "examples/examples.md",
-    "Exported Functions" => "functions.md",
-    "Models" =>
-                ["Model 1" => "models/model1.md",
-                    "Model 2" => "models/model2.md"],
-    "Reference" => "reference.md",
-    ] # https://documenter.juliadocs.org/stable/man/guide/#Adding-Some-Docstrings
 
 
 
@@ -21,7 +11,8 @@ Return a path relative to the default template file directory
 mypkgtemplate_dir(paths::AbstractString...) = joinpath(DEFAULT_TEMPLATE_DIR[], paths...)
 
 """
-A quick package creater that does
+`ok_pkg_template(yourpkgname::String; destination="", julia_ver = v"1.6", username="okatsn")` is
+a quick package creater that does
 ```julia
 t = Template(;
     ...
@@ -34,15 +25,15 @@ but with my configurations.
 
 Template files are put under: $(DEFAULT_TEMPLATE_DIR[]), just like that of "PkgTemplates/templates".
 """
-function ok_pkg_template(yourpkgname::String; destination="")
+function ok_pkg_template(yourpkgname::String; destination="", julia_ver = v"1.6", username="okatsn")
     if isempty(destination)
         destination = pwd()
     end
 
     t = Template(;
-    user="okatsn",
+    user=username,
     dir=destination,
-    julia=v"1.6",
+    julia=julia_ver,
     plugins=[
         Git(; manifest=false),
         GitHubActions(;file = mypkgtemplate_dir("github", "workflows", "CI.yml")), # see PkgTemplates/src/plugins/ci.jl
