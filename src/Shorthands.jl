@@ -22,6 +22,6 @@ include("replacex.jl")
 export replacex
 
 using PkgTemplates
-include("mypkgtemplates.jl")
+include("mypkgtemplates/mypkgtemplates.jl")
 export ok_pkg_template
 end
