@@ -10,9 +10,9 @@ t("YourPackage")
 ```
 but with my configurations.
 """
-function ok_pkg_template(yourpkgname::String;destination="")
+function ok_pkg_template(yourpkgname::String; destination="")
     if isempty(destination)
-        destination = joinpath(pwd(), yourpkgname)
+        destination = pwd()
     end
 
     dirtemp = mkpath("oktemptemp")
