@@ -27,7 +27,15 @@ end
     end
 end
 
+using Documenter
+@testset "DocTests" begin
+    DocMeta.setdocmeta!({{{PKG}}}, :DocTestSetup, :(using {{{PKG}}}); recursive=true)
+    # using the package everywhere in the doc
+    # See also https://documenter.juliadocs.org/stable/man/doctests/#Setup-Code
 
+
+    doctest({{{PKG}}}; manual = false) # this makes jldoctest also be tested in a local test
+end
 # @testitem "test vscode testitem" begin
 #     println("Only `@testitem` block will be detectable by vscode's test")
 #     @test true
