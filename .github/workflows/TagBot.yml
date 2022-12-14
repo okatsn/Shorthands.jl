@@ -18,6 +18,23 @@ jobs:
     # if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3 # see https://github.com/actions/checkout
+        with:
+          path: Shorthands
+      - uses: actions/checkout@v3 # see https://github.com/actions/checkout
+        with:
+          repository: okatsn/OkRegistry
+          path: OkRegistry
+          token: ${{ secrets.ACCESS_OKREGISTRY }}
+      - run: |
+          julia --project=OkRegistry -e '
+            using Pkg;
+            Pkg.Registry.add(RegistrySpec(url = "https://github.com/okatsn/OkRegistry.git"));
+            cd("OkRegistry");
+            include("add_local_pkg_to_registry.jl");
+            '
+        # Update OkRegistry first.
+        # Current path is critical. Please refer to "add_local_pkg_to_registry.jl" in OkRegistry.
       - uses: JuliaRegistries/TagBot@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
