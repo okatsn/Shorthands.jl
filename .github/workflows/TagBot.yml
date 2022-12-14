@@ -1,3 +1,4 @@
+# Modified from the [Default TagBot template in PkgTemplates](https://github.com/JuliaCI/PkgTemplates.jl/blob/master/templates/github/workflows/TagBot.yml)
 name: TagBot
 
 on:
@@ -28,6 +29,7 @@ jobs:
           repository: okatsn/OkRegistry
           path: OkRegistry
           token: ${{ secrets.ACCESS_OKREGISTRY }}
+    # actions/checkout clones repo
       - run: |
           cd OkRegistry
           git config --local user.email "action@github.com"
@@ -38,12 +40,16 @@ jobs:
             Pkg.Registry.add(RegistrySpec(url = "https://github.com/okatsn/OkRegistry.git"));
             include("add_local_pkg_to_registry.jl");
             '
-      # Update OkRegistry first.
-      # Current path is critical. Please refer to "add_local_pkg_to_registry.jl" in OkRegistry.
+    # Update OkRegistry first.
+    # 1. Current path is critical. Please refer to "add_local_pkg_to_registry.jl" in OkRegistry.
+    # 2. `git config` is required, and has to be done in repo OkRegistry (cd OkRegistry must precede)
+    # 3. Personal registry is add per julia install; that is, OkRegistry should be added before `Pkg.instantiate()`
   TagBot:
     # if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
     runs-on: ubuntu-20.04
     steps:
+    # 1. You have to wait until UpdateOkReg is done
+    # 2. You cannot change julia environment here; thus, UpdateOkReg has to be independent from TagBot.
       - uses: JuliaRegistries/TagBot@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
