@@ -47,7 +47,7 @@ function ok_pkg_template(yourpkgname::String; destination="", julia_ver = v"1.6"
                 # For more information, see [here](https://github.com/JuliaRegistries/TagBot#custom-registries)
                 changelog = """
                 ## {{ package }} {{ version }}
-                ${{github.event.head_commit.message}}
+                \${{github.event.head_commit.message}}
                 {% if previous_release %}
                 [Diff since {{ previous_release }}]({{ compare_url }})
                 {% endif %}
