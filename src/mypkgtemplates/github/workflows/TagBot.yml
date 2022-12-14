@@ -42,3 +42,6 @@ jobs:
           {{#DISPATCH_DELAY}}
           dispatch_delay: {{{DISPATCH_DELAY}}}
           {{/DISPATCH_DELAY}}
+
+# How to create PAT
+# https://stevenmortimer.com/running-github-actions-sequentially/

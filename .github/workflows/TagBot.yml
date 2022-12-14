@@ -29,6 +29,8 @@ jobs:
           path: OkRegistry
           token: ${{ secrets.ACCESS_OKREGISTRY }}
       - run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
           julia --project=OkRegistry -e '
             using Pkg;
             cd("OkRegistry");
