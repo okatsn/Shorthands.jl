@@ -3,7 +3,9 @@ on:
   push:
     paths:
       - 'Project.toml'
-    branches: {{{BRANCHES}}}
+    branches:
+      - main
+      - master
   issue_comment:
     types:
       - created
