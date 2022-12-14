@@ -31,9 +31,9 @@ jobs:
       - run: |
           julia --project=OkRegistry -e '
             using Pkg;
-            Pkg.Registry.add(RegistrySpec(url = "https://github.com/okatsn/OkRegistry.git"));
             cd("OkRegistry");
             Pkg.instantiate();
+            Pkg.Registry.add(RegistrySpec(url = "https://github.com/okatsn/OkRegistry.git"));
             include("add_local_pkg_to_registry.jl");
             '
       # Update OkRegistry first.
