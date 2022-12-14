@@ -51,7 +51,6 @@ jobs:
     steps:
     # 1. You have to wait until UpdateOkReg is done
     # 2. You cannot change julia environment here; thus, UpdateOkReg has to be independent from TagBot.
-      - run: echo "wait for 2 minutes for updating OkRegistry" && sleep 60
       - uses: JuliaRegistries/TagBot@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -60,6 +59,7 @@ jobs:
           # For more information, see [here](https://github.com/JuliaRegistries/TagBot#custom-registries)
           changelog: |
             ## {{ package }} {{ version }}
+            ${{github.event.head_commit.message}}
             {% if previous_release %}
             [Diff since {{ previous_release }}]({{ compare_url }})
             {% endif %}
