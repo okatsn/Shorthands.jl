@@ -14,7 +14,8 @@ on:
   workflow_dispatch:
   # see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
 jobs:
-  UpdateOkReg:
+  TagBot:
+    # if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
     runs-on: ubuntu-20.04
     steps:
       - uses: julia-actions/setup-julia@v1
