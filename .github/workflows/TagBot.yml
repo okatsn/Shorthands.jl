@@ -14,7 +14,8 @@ on:
   workflow_dispatch:
   # see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
 jobs:
-  UpdateOkReg:
+  TagBot:
+    # if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
     runs-on: ubuntu-20.04
     steps:
       - uses: julia-actions/setup-julia@v1
@@ -40,10 +41,6 @@ jobs:
             '
       # Update OkRegistry first.
       # Current path is critical. Please refer to "add_local_pkg_to_registry.jl" in OkRegistry.
-  TagBot:
-    # if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
-    runs-on: ubuntu-20.04
-    steps:
       - uses: JuliaRegistries/TagBot@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
