@@ -31,6 +31,7 @@ jobs:
             using Pkg;
             Pkg.Registry.add(RegistrySpec(url = "https://github.com/okatsn/OkRegistry.git"));
             cd("OkRegistry");
+            Pkg.instantiate();
             include("add_local_pkg_to_registry.jl");
             '
         # Update OkRegistry first.
