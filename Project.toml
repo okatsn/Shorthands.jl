@@ -12,6 +12,7 @@ TestItems = "1c621080-faea-4a02-84b6-bbd5e436b8fe"
 
 [compat]
 Aqua = "0.5"
+Documenter = "0.27"
 InvertedIndices = "1"
 PkgTemplates = "0.7"
 TestItems = "0.1"
