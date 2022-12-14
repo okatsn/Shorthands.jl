@@ -66,7 +66,8 @@ function ok_pkg_template(yourpkgname::String; destination="", julia_ver = v"1.6"
                 - {{ pull.title }} (#{{ pull.number }}) (@{{ pull.author.username }})
                 {% endfor %}
                 {% endif %}
-                """
+                """,
+                file = mypkgtemplate_dir("github", "workflows", "TagBot.yml"),
             ), # see PkgTemplates/src/plugins/tagbot.jl
                # It use the template TagBot.yml in PkgTemplates directly, the mypkgtemplate/github/workflows/TagBot.yml is just for reference and can be deleted. `changelog` is modified from [default changelog template](https://github.com/JuliaRegistries/TagBot/blob/master/action.yml) with extra `${{github.event.head_commit.message}}`.
         Tests(; file=mypkgtemplate_dir("test","runtests.jl")) # see PkgTemplates/src/plugins/tests.jl
