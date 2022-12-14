@@ -29,7 +29,7 @@ Correspond `PkgTemplates` to this commit: https://github.com/JuliaCI/PkgTemplate
 """
 function ok_pkg_template(yourpkgname::String; destination="", julia_ver = v"1.6", username="okatsn")
     if isempty(destination)
-        destination = pwd()
+        destination = Pkg.devdir()
     end
 
     t = Template(;

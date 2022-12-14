@@ -21,7 +21,7 @@ export depreport
 include("replacex.jl")
 export replacex
 
-using PkgTemplates
+using PkgTemplates, Pkg
 include("mypkgtemplates/mypkgtemplates.jl")
 export ok_pkg_template
 export mypkgtemplate_dir
