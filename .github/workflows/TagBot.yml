@@ -47,11 +47,11 @@ jobs:
     # 3. Personal registry is add per julia install; that is, OkRegistry should be added before `Pkg.instantiate()`
   TagBot:
     # if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     # 1. You have to wait until UpdateOkReg is done
     # 2. You cannot change julia environment here; thus, UpdateOkReg has to be independent from TagBot.
-      - run: echo "wait for 2 minutes for updating OkRegistry" && sleep 120
+      - run: echo "wait for 2 minutes for updating OkRegistry" && sleep 60
       - uses: JuliaRegistries/TagBot@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
