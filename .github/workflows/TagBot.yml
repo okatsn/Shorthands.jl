@@ -29,11 +29,11 @@ jobs:
           path: OkRegistry
           token: ${{ secrets.ACCESS_OKREGISTRY }}
       - run: |
-          git config user.email "okatsn@gmail.com"
-          git config user.name "okatsn"
-          julia --project=OkRegistry -e '
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions"
+          cd OkRegistry
+          julia --project=@. -e '
             using Pkg;
-            cd("OkRegistry");
             Pkg.instantiate();
             Pkg.Registry.add(RegistrySpec(url = "https://github.com/okatsn/OkRegistry.git"));
             include("add_local_pkg_to_registry.jl");
