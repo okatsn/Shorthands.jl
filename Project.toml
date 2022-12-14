@@ -1,7 +1,7 @@
 name = "Shorthands"
 uuid = "d0c9a04e-d1fd-4d35-a387-089b7121b945"
 authors = ["Tsung-Hsi Wu <okatsn@gmail.com>"]
-version = "0.4.3"
+version = "0.4.4"
 
 [deps]
 Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
