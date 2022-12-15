@@ -2,18 +2,8 @@
 name: TagBot
 
 on:
-  push:
-    paths:
-      - 'Project.toml'
-    branches:
-      - master
-
-  issue_comment:
-    types:
-      - created
-  # see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#issue_comment
-  workflow_dispatch:
-  # see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+  repository_dispatch:
+    types: [trigger-tagbot]
 jobs:
   # UpdateOkReg:
   #   # if: github.event_name == 'workflow_dispatch' || github.actor == 'JuliaTagBot'
