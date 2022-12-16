@@ -1,12 +1,13 @@
 name = "Shorthands"
 uuid = "d0c9a04e-d1fd-4d35-a387-089b7121b945"
 authors = ["Tsung-Hsi Wu <okatsn@gmail.com>"]
-version = "0.4.12"
+version = "0.4.13"
 
 [deps]
 Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 InvertedIndices = "41ab1584-1d38-5bbf-9106-f11c6c58b48f"
+OkPkgTemplates = "38290ba8-8fbe-457b-bf75-0e4980da3840"
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 TestItems = "1c621080-faea-4a02-84b6-bbd5e436b8fe"
 
