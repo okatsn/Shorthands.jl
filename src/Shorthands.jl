@@ -21,5 +21,6 @@ export depreport
 include("replacex.jl")
 export replacex
 
-
+include("combos.jl")
+export uniqueonly
 end
